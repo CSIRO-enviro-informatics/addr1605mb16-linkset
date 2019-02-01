@@ -1,0 +1,60 @@
+Generation of Mesh Block Match Linkset Method
+=============================================
+
+The G-NAF May 2016 dataset was the product that was chosen for its Addresses to generate the Mesh Block Match linkset to
+the ASGS's 2016 Mesh Blocks, in line with the 2016 Australian census (2016-08-09). Since the G-NAF May 2016 dataset was
+a few months before the census date, it did not have the Mesh Blocks to form this linkset. To create this linkset, the
+Mesh Blocks from the G-NAF August 2016 dataset have been back-ported to the G-NAF May 2016 dataset.
+
+
+Method
+------
+
+The G-NAF May [1] and August [2] 2016 datasets were ingested into a PostGreSQL data store. The address_mesh_block_2016
+table from the August dataset was then ingested into the May version (as it does not contain the Mesh Block Match data).
+The Mesh Block Match data from the August dataset was dumped to CSV for each corresponding Address in the May dataset.
+
+
+Findings
+--------
+
+Initially, only address_mesh_block_2016 rows with an Address created on or before the census date was ingested into the
+May version. It was quickly found that some Addresses from May to August had been modified, including its date_created
+column. This meant that many of the Mesh Block Match with Addresses which should exist before the census date have now
+been filtered out because their date_created were changed to after the census date.
+
+(a) By filtering it out based on the Address' date_created in the August version:
+    1. 40,508 Addresses in May version did not have a corresponding Mesh Block Match
+    2. 111,703 Mesh Block Match did not have a corresponding May Address
+    3. 40,508 Addresses were supposedly created after census date (even though the persistent ID for these newly created
+       Addresses existed in the May version)
+
+(b) With no filtering on the Addresses of the Mesh Block Match in August:
+    1. 38,913 Addresses did not have a corresponding Mesh Block Match
+    2. 111,706 Mesh Block Match did not have a corresponding Address
+
+(c) The total number of Mesh Block Match:
+    1. 14,247,235 in the August version
+    2. 14,245,637 with Addresses created before the census date
+    3. Difference of the two is: 1598
+
+
+Insight
+-------
+
+In (a) 40,508 Addresses were supposedly created after the census date. However, subtracting (b1) from (a1), the result
+was 1595. This means that 1595 Addresses with the same persistent ID had their date_created property changed from its
+original value to after the census date. Another interesting finding was the result of subtracting (a2) from (b2) was
+a difference of 3. This may be a coincidence but the difference of (c3) and the result of (a1) minus (b1) was also 3.
+This showed that the Addresses and Mesh Block Match for at least the 1595 Addresses with altered date_created property
+had a 1:1 relationship.
+
+
+Sources
+-------
+
+[1] The data source for the May 2016 release of the G-NAF was retrieved from:
+    https://data.gov.au/dataset/ds-dga-e1a365fc-52f5-4798-8f0c-ed1d33d43b6d/distribution/dist-dga-7d9bfefa-9f3f-4ece-8736-705f62721bea/?q=g-naf
+
+[2] The data source for the August 2016 release of the G-NAF was retrieved from:
+    https://data.gov.au/dataset/ds-dga-e1a365fc-52f5-4798-8f0c-ed1d33d43b6d/distribution/dist-dga-dbeb5e08-9d35-4dd7-b24f-e423be5218d6/?q=g-naf
