@@ -31,7 +31,7 @@ This Linkset consists of the following files:
 * **[README.md](README.md)** - This file, providing an introduction to the Linkset
 * **[header.ttl](header.ttl)** - An RDF File with metadata about the linkset, and all RDF prefixes used in the linkset.
 * **[addr1605mb16-linkset-10-rows.ttl](addr1605mb16-linkset-10-rows.ttl)** - An incomplete RDF File showing the first 10 transitiveSfOverlaps relationships used as an example. Turtle format. Not including the header.
-* **[addr1605mb16-linkset.csv](addr1605mb16-linkset.csv)** - An incomplete CSV file showing the first 10 rows.
+* **[addr1605mb16-linkset-10-rows.csv](addr1605mb16-linkset-10-rows.csv)** - An incomplete CSV file showing the first 10 rows.
 * **[generate_linkset.py](generate_linkset.py)** - The script used to generate the linkset from a CSV file.
 * **[linkset_generation_method.txt](linkset_generation_method.txt)** - The generation method for generating the linkset with findings and insights.
 * **[query.sql](query.sql)** - The SQL query used to retrieve the CSV data used to generate the linkset. 
