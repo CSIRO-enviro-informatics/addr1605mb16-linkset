@@ -38,7 +38,7 @@
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 
 <http://linked.data.gov.au/linkset/eawlyn> a loci:Linkset ;
-    dct:title "Addresses 2016 to Mesh Block 2016 Linkset" ;
+    dct:title "Addresses (May 2016) to Mesh Block (2016) Linkset" ;
     dct:description """This Loc-I Linkset relates the G-NAF Address individuals to ASGS Mesh Block individuals. Every relation is a geosparql:sfWithin.
 
 The Linkset triples (Address sfWithin MeshBlock) are reified so that each triple is contained within an RDF statement class instance. The triple is identified by the G-NAF MeshBlockMatch persistent identifier and the method used to generate the triple is given by the loci:hadGenerationMethod.
