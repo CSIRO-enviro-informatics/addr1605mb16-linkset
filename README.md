@@ -1,7 +1,7 @@
 # 2016 May Addresses to 2016 Mesh Block Linkset
 This code repository contains a Linkset - a specialised Dataset linking objects in two other Datasets.
 
-This Linkset contains spatial associations between [`Address`](http://linked.data.gov.au/def/gnaf#Address) class objects in the latest version of the Geocoded National Address File (GNAF 2016 May) and [`Mesh Block`](http://linked.data.gov.au/def/asgs#MeshBlock) class objects in the 2016 version of the Australian Statistical Geography Standard (ASGS 2016).
+This Linkset contains spatial associations between [`Address`](http://linked.data.gov.au/def/gnaf#Address) class objects in the May, 2016 version of the Geocoded National Address File (GNAF 2016 May) and [`Mesh Block`](http://linked.data.gov.au/def/asgs#MeshBlock) class objects in the 2016 version of the Australian Statistical Geography Standard (ASGS 2016).
 
 Addresses, in the [GNAF 2016 May dataset](http://linked.data.gov.au/dataset/gnaf), are represented spatially as points. Mesh Blocks, in the [ASGS 2016](http://linked.data.gov.au/dataset/asgs2016), are represented spatially as polygons. Mesh Blocks do not overlap and cover all of Australia, so any GNAF 2016 May Address will lie within one, and only one, Mesh Block.
 
